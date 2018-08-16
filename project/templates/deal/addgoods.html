@@ -1,0 +1,66 @@
+{% extends 'deal/base.html' %}
+{% load static from staticfiles %}
+{% block linkscript%}
+    <link rel="stylesheet" type="text/css" href="{% static 'mine/css/register.css' %}" />
+    <script type="text/javascript" charset="utf-8" src="{% static 'mine/js/addgoods.js' %}" ></script>
+{% endblock linkscript%}
+
+
+{% block base %}
+<div id="register">
+    <div id="header">
+        <a href="/mine/"><p>&lt;返回</p></a>
+    </div>
+    <form class="form-horizontal" action="/addgoods/" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <div class="input-group">
+            <span class="input-group-addon">商品名称</span>
+            <input id="accunt" type="text" class="form-control" placeholder="商品介绍最多为为10个字符" aria-describedby="basic-addon1" name="name">
+        </div>
+{#        <span id="accunterr" class="error">商品名称格式输入错误</span>#}
+        <span id="checkerr" class="error">商品名称已被占用，请重新输入</span>
+        <br/>
+        <div class="input-group">
+            <span class="input-group-addon">商品长名称</span>
+            <input id="pass" type="text" class="form-control"  aria-describedby="basic-addon1" name="longname">
+        </div>
+{#        <span id="passerr" class="error">格式输入错误</span>#}
+        <br />
+        <div class="input-group">
+            <span class="input-group-addon">规格</span>
+            <input id="passwd" type="text" class="form-control" placeholder="规格长度为6~16个字符" aria-describedby="basic-addon1" name="specifics">
+        </div>
+        <br/>
+        <div class="input-group">
+            <span class="input-group-addon">价格</span>
+            <input required="required" type="text" class="form-control" aria-describedby="basic-addon1" name="price">
+        </div>
+        <br/>
+        <div class="input-group">
+            <span class="input-group-addon">原价价格</span>
+            <input required="required" type="text" class="form-control" aria-describedby="basic-addon1" name="marketprice">
+        </div>
+        <br/>
+        <div class="input-group">
+            <span class="input-group-addon">库存</span>
+            <input required="required" type="text" class="form-control" aria-describedby="basic-addon1" name="storenums">
+        </div>
+        <br/>
+        <div class="input-group">
+            <span class="input-group-addon">地址</span>
+            <input required="required" type="text" class="form-control" aria-describedby="basic-addon1" name="address">
+        </div>
+        <br/>
+        <div class="input-group">
+            <span class="input-group-addon">商品图片</span>
+            <input required="required" type="file" class="form-control" aria-describedby="basic-addon1" name="productimg">
+        </div>
+        <br/>
+        <div class="input-group">
+            <span class="input-group-addon">添加</span>
+
+            <input type="submit" class="form-control" aria-describedby="basic-addon1" value="添加">
+        </div>
+    </form>
+</div>
+{% endblock base %}
